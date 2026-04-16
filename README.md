@@ -97,7 +97,6 @@ Open **http://localhost:4200** in your browser.
 <img width="450" height="400" alt="Screenshot 2026-04-03 191448" src="https://github.com/user-attachments/assets/c097efd4-67b1-4139-add7-f6f2b4d25a34" />
 <img width="450" height="400" alt="Screenshot 2026-04-03 191510" src="https://github.com/user-attachments/assets/039f799f-b706-4691-aa94-a1c069d75127" />
 <img width="450" height="400" alt="Screenshot 2026-04-03 191525" src="https://github.com/user-attachments/assets/53006a5b-f9e5-4eb5-9889-ec041665d198" />
-<img width="500" height="400" alt="Screenshot 2026-04-03 191542 (1)" src="https://github.com/user-attachments/assets/474943f1-3b6f-4c6e-b070-543deabaca0f" />
 <img width="450" height="400" alt="Screenshot 2026-04-03 191542" src="https://github.com/user-attachments/assets/095946d1-dc46-4eb7-aa4c-85544532ba8d" />
 <img width="450" height="400" alt="Screenshot 2026-04-03 191556" src="https://github.com/user-attachments/assets/8788bcac-2a9a-43ba-bbf6-8fdfab2eaf0e" />
 <img width="450" height="400" alt="Screenshot 2026-04-03 191609" src="https://github.com/user-attachments/assets/9b17cb24-6305-40b3-a72f-66bfe95bfdac" />
