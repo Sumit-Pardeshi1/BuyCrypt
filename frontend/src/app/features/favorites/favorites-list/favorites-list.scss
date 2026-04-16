@@ -1,0 +1,58 @@
+// Pulse animation for favorite hearts
+@keyframes pulseHeart {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+}
+
+.pulse-heart {
+  animation: pulseHeart 2s ease-in-out infinite;
+}
+
+// Remove favorite button animation
+.remove-favorite-btn {
+  transition: all 0.3s ease;
+  
+  &:hover {
+    transform: scale(1.1);
+    
+    .fa-heart {
+      animation: heartBeat 0.5s ease-in-out;
+    }
+  }
+}
+
+@keyframes heartBeat {
+  0%, 100% {
+    transform: scale(1);
+  }
+  25% {
+    transform: scale(1.2);
+  }
+  50% {
+    transform: scale(1);
+  }
+  75% {
+    transform: scale(1.2);
+  }
+}
+
+// Button group styling
+.btn-group {
+  .btn {
+    border-radius: 0.25rem !important;
+    margin-right: 0.25rem;
+    
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+}
+
+// Empty state styling
+.fa-heart-broken {
+  opacity: 0.3;
+}

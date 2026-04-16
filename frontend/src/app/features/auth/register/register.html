@@ -1,0 +1,110 @@
+<div class="register-page">
+  <div class="register-box">
+    <div class="card card-outline card-primary">
+      <div class="card-header text-center">
+        <h1><b>Buy</b>Crypto</h1>
+      </div>
+      <div class="card-body">
+        <p class="login-box-msg">Register a new account</p>
+
+        <form (ngSubmit)="onSubmit()">
+          <div class="input-group mb-3">
+            <input 
+              type="text" 
+              class="form-control" 
+              placeholder="Full Name"
+              [(ngModel)]="fullName"
+              name="fullName"
+              required>
+            <div class="input-group-append">
+              <div class="input-group-text">
+                <span class="fas fa-user"></span>
+              </div>
+            </div>
+          </div>
+
+          <div class="input-group mb-3">
+            <input 
+              type="email" 
+              class="form-control" 
+              placeholder="Email"
+              [(ngModel)]="email"
+              name="email"
+              required>
+            <div class="input-group-append">
+              <div class="input-group-text">
+                <span class="fas fa-envelope"></span>
+              </div>
+            </div>
+          </div>
+
+          <div class="input-group mb-3">
+            <input 
+              type="tel" 
+              class="form-control" 
+              placeholder="Phone Number (Optional)"
+              [(ngModel)]="phoneNumber"
+              name="phoneNumber">
+            <div class="input-group-append">
+              <div class="input-group-text">
+                <span class="fas fa-phone"></span>
+              </div>
+            </div>
+          </div>
+
+          <div class="input-group mb-3">
+            <input 
+              type="password" 
+              class="form-control" 
+              placeholder="Password"
+              [(ngModel)]="password"
+              name="password"
+              required>
+            <div class="input-group-append">
+              <div class="input-group-text">
+                <span class="fas fa-lock"></span>
+              </div>
+            </div>
+          </div>
+
+          <div class="input-group mb-3">
+            <input 
+              type="password" 
+              class="form-control" 
+              placeholder="Confirm Password"
+              [(ngModel)]="confirmPassword"
+              name="confirmPassword"
+              required>
+            <div class="input-group-append">
+              <div class="input-group-text">
+                <span class="fas fa-lock"></span>
+              </div>
+            </div>
+          </div>
+
+          <div *ngIf="errorMessage" class="alert alert-danger">
+            {{ errorMessage }}
+          </div>
+
+          <div class="row">
+            <div class="col-12">
+              <button 
+                type="submit" 
+                class="btn btn-primary btn-block"
+                [disabled]="isLoading">
+                <span *ngIf="!isLoading">Register</span>
+                <span *ngIf="isLoading">
+                  <i class="fas fa-spinner fa-spin"></i> Creating Account...
+                </span>
+              </button>
+            </div>
+          </div>
+        </form>
+
+        <p class="mb-0 mt-3 text-center">
+          <a routerLink="/login" class="text-center">Already have an account? Sign in</a>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>

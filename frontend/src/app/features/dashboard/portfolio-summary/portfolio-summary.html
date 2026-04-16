@@ -1,0 +1,96 @@
+<div class="row">
+  <div class="col-md-6">
+    <div class="card">
+      <div class="card-header">
+        <h3 class="card-title">
+          <i class="fas fa-chart-pie mr-1"></i>
+          Portfolio Overview
+        </h3>
+      </div>
+      <div class="card-body">
+        <div class="row">
+          <div class="col-md-6">
+            <div class="info-box">
+              <span class="info-box-icon bg-info"><i class="fas fa-coins"></i></span>
+              <div class="info-box-content">
+                <span class="info-box-text">Total Assets</span>
+                <span class="info-box-number">{{ dashboard?.totalAssets || 0 }}</span>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="info-box">
+              <span class="info-box-icon bg-success"><i class="fas fa-exchange-alt"></i></span>
+              <div class="info-box-content">
+                <span class="info-box-text">Total Transactions</span>
+                <span class="info-box-number">{{ dashboard?.totalTransactions || 0 }}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="progress-group">
+          <span class="progress-text">Invested Percentage</span>
+          <span class="float-right"><b>{{ dashboard?.investedPercentage | number:'1.2-2' }}%</b></span>
+          <div class="progress progress-sm">
+            <div class="progress-bar bg-primary" 
+                 [style.width.%]="dashboard?.investedPercentage || 0"></div>
+          </div>
+        </div>
+
+        <hr>
+
+        <div class="row text-center">
+          <div class="col-6">
+            <div class="description-block border-right">
+              <h5 class="description-header">₹{{ dashboard?.currentValue | number:'1.2-2' }}</h5>
+              <span class="description-text">CURRENT VALUE</span>
+            </div>
+          </div>
+          <div class="col-6">
+            <div class="description-block">
+              <h5 class="description-header" 
+                  [ngClass]="(dashboard?.totalProfitLoss || 0) >= 0 ? 'text-success' : 'text-danger'">
+                ₹{{ dashboard?.totalProfitLoss | number:'1.2-2' }}
+              </h5>
+              <span class="description-text">TOTAL P/L</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-6">
+    <div class="card">
+      <div class="card-header">
+        <h3 class="card-title">
+          <i class="fas fa-wallet mr-1"></i>
+          Wallet Summary
+        </h3>
+      </div>
+      <div class="card-body">
+        <div *ngFor="let wallet of dashboard?.wallets" class="callout callout-info">
+          <h5>{{ wallet.currency }} Wallet</h5>
+          <p class="mb-0">
+            <strong>Balance:</strong> {{ wallet.currency }} {{ wallet.balance | number:'1.2-2' }}
+          </p>
+          <div class="mt-2">
+            <a routerLink="/app/wallet/deposit" class="btn btn-sm btn-success mr-2">
+              <i class="fas fa-plus"></i> Deposit
+            </a>
+            <a routerLink="/app/wallet/withdraw" class="btn btn-sm btn-warning">
+              <i class="fas fa-minus"></i> Withdraw
+            </a>
+          </div>
+        </div>
+        
+        <div *ngIf="!dashboard?.wallets || dashboard?.wallets?.length === 0"
+             class="alert alert-warning">
+          <i class="icon fas fa-exclamation-triangle"></i>
+          No wallet found. Please create a wallet first.
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

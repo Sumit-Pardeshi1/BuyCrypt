@@ -1,0 +1,28 @@
+﻿# .NET Backend
+backend/**/bin/
+backend/**/obj/
+backend/**/.vs/
+backend/**/*.user
+backend/**/app-error.log
+backend/**/out.log
+backend/**/build_errors.txt
+backend/**/infra_errors.txt
+backend/**/errors.json
+
+# Angular Frontend
+frontend/node_modules/
+frontend/dist/
+frontend/.angular/
+frontend/android/
+frontend/package-lock.json
+frontend/npm_install_log.txt
+
+# OS / Editor
+.DS_Store
+Thumbs.db
+*.swp
+.vscode/
+*.log
+
+# Secrets - never commit
+**/appsettings.Development.json

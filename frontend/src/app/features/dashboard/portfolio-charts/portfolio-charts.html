@@ -1,0 +1,95 @@
+<div class="row" *ngIf="dashboard && dashboard.holdings.length > 0">
+  
+  <!-- Portfolio Value Over Time -->
+  <div class="col-lg-8 col-md-12">
+    <div class="card">
+      <div class="card-header border-0">
+        <div class="d-flex justify-content-between align-items-center">
+          <h3 class="card-title mb-0">
+            <i class="fas fa-chart-line text-primary mr-2"></i>
+            Portfolio Value Over Time
+          </h3>
+          <div class="card-tools">
+            <span class="badge badge-primary">Last 30 Days</span>
+          </div>
+        </div>
+      </div>
+      <div class="card-body pt-2">
+        <!-- Portfolio Stats -->
+        <div class="row mb-3">
+          <div class="col-md-4">
+            <div class="info-box-content">
+              <span class="info-box-text text-muted">Total Value</span>
+              <span class="info-box-number text-primary h5">
+                ₹{{ dashboard.currentValue | number:'1.2-2' }}
+              </span>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="info-box-content">
+              <span class="info-box-text text-muted">Cost Basis</span>
+              <span class="info-box-number h5">
+                ₹{{ dashboard.totalInvested | number:'1.2-2' }}
+              </span>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="info-box-content">
+              <span class="info-box-text text-muted">Unrealized Gains</span>
+              <span class="info-box-number h5" 
+                    [ngClass]="dashboard.totalProfitLoss >= 0 ? 'text-success' : 'text-danger'">
+                ₹{{ dashboard.totalProfitLoss | number:'1.2-2' }}
+                <small>({{ dashboard.profitLossPercentage | number:'1.2-2' }}%)</small>
+              </span>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Chart -->
+        <div style="height: 320px; position: relative;">
+          <canvas #lineChartCanvas></canvas>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Asset Allocation Pie Chart -->
+  <div class="col-lg-4 col-md-12">
+    <div class="card">
+      <div class="card-header border-0">
+        <h3 class="card-title mb-0">
+          <i class="fas fa-chart-pie text-warning mr-2"></i>
+          Asset Allocation
+        </h3>
+      </div>
+      <div class="card-body">
+        <div style="height: 280px; position: relative;">
+          <canvas #pieChartCanvas></canvas>
+        </div>
+        
+        <!-- Total Investment Display -->
+        <div class="text-center mt-3 pt-3 border-top">
+          <p class="text-muted mb-1">Total Investment</p>
+          <h4 class="mb-0">₹{{ dashboard.totalInvested | number:'1.2-2' }}</h4>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- Empty State -->
+<div class="row" *ngIf="!dashboard || dashboard.holdings.length === 0">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-body text-center py-5">
+        <i class="fas fa-chart-bar fa-4x text-muted mb-4"></i>
+        <h4 class="text-muted mb-3">No Portfolio Data</h4>
+        <p class="text-muted mb-4">Start investing to see your portfolio charts and analytics</p>
+        <a routerLink="/app/market" class="btn btn-primary btn-lg">
+          <i class="fas fa-shopping-cart mr-2"></i> Explore Market
+        </a>
+      </div>
+    </div>
+  </div>
+</div>

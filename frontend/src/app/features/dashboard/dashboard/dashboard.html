@@ -1,0 +1,99 @@
+<div class="content-header">
+  <div class="container-fluid">
+    <div class="row mb-2">
+      <div class="col-sm-6">
+        <h1 class="m-0">Dashboard</h1>
+      </div>
+      <div class="col-sm-6">
+        <button class="btn btn-primary float-right" (click)="refresh()">
+          <i class="fas fa-sync-alt"></i> Refresh
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<section class="content">
+  <div class="container-fluid">
+    
+    <!-- Loading State -->
+    <div *ngIf="isLoading" class="text-center py-5">
+      <i class="fas fa-spinner fa-spin fa-3x text-primary"></i>
+      <p class="mt-3">Loading dashboard...</p>
+    </div>
+
+    <!-- Error State -->
+    <div *ngIf="errorMessage && !isLoading" class="alert alert-danger">
+      <i class="icon fas fa-ban"></i> {{ errorMessage }}
+    </div>
+
+    <!-- Dashboard Content -->
+    <div *ngIf="dashboard && !isLoading">
+      
+      <!-- Summary Cards Row -->
+      <div class="row">
+        <!-- Net Worth -->
+        <div class="col-lg-3 col-6">
+          <div class="small-box bg-info">
+            <div class="inner">
+              <h3>₹{{ dashboard.netWorth | number:'1.2-2' }}</h3>
+              <p>Net Worth</p>
+            </div>
+            <div class="icon">
+              <i class="fas fa-wallet"></i>
+            </div>
+          </div>
+        </div>
+
+       <!-- Portfolio Value -->
+<div class="col-lg-3 col-6">
+  <div class="small-box bg-success">
+    <div class="inner">
+      <h3>₹{{ dashboard.currentValue | number:'1.2-2' }}</h3>
+      <p>Portfolio Value</p>
+    </div>
+    <div class="icon">
+      <i class="fas fa-chart-line"></i>
+    </div>
+  </div>
+</div>
+        <!-- Total Invested -->
+        <div class="col-lg-3 col-6">
+          <div class="small-box bg-warning">
+            <div class="inner">
+              <h3>₹{{ dashboard.totalInvested | number:'1.2-2' }}</h3>
+              <p>Total Invested</p>
+            </div>
+            <div class="icon">
+              <i class="fas fa-chart-line"></i>
+            </div>
+          </div>
+        </div>
+
+        <!-- Profit/Loss -->
+        <div class="col-lg-3 col-6">
+          <div class="small-box" [ngClass]="dashboard.totalProfitLoss >= 0 ? 'bg-success' : 'bg-danger'">
+            <div class="inner">
+              <h3>₹{{ dashboard.totalProfitLoss | number:'1.2-2' }}</h3>
+              <p>Profit/Loss ({{ dashboard.profitLossPercentage | number:'1.2-2' }}%)</p>
+            </div>
+            <div class="icon">
+              <i class="fas" [ngClass]="dashboard.totalProfitLoss >= 0 ? 'fa-arrow-up' : 'fa-arrow-down'"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Portfolio Overview -->
+      <app-portfolio-summary [dashboard]="dashboard"></app-portfolio-summary>
+
+      <!--  ADD CHARTS HERE -->
+  <app-portfolio-charts [dashboard]="dashboard"></app-portfolio-charts>
+
+      <!-- Holdings List -->
+      <app-holdings-list [holdings]="dashboard.holdings"></app-holdings-list>
+
+    </div>
+
+  </div>
+</section>

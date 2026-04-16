@@ -1,0 +1,116 @@
+<aside class="main-sidebar sidebar-dark-primary elevation-4">
+  <!-- Brand Logo -->
+  <a routerLink="/app/dashboard" class="brand-link">
+    <i class="fas fa-bitcoin-sign brand-image img-circle elevation-3" style="font-size: 2rem; color: #f39c12;"></i>
+    <span class="brand-text font-weight-light">BuyCrypt</span>
+  </a>
+
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <!-- Sidebar user panel -->
+    <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+      <div class="image">
+        <i class="fas fa-user-circle" style="font-size: 2rem; color: #fff;"></i>
+      </div>
+      <div class="info">
+        <a routerLink="/app/dashboard" class="d-block">{{ currentUser?.fullName || 'Guest' }}</a>
+      </div>
+    </div>
+
+    <!-- Sidebar Menu -->
+    <nav class="mt-2">
+      <ul class="nav nav-pills nav-sidebar flex-column" role="menu">
+
+        <!-- Dashboard -->
+        <li class="nav-item">
+          <a routerLink="/app/dashboard" routerLinkActive="active" class="nav-link">
+            <i class="nav-icon fas fa-tachometer-alt"></i>
+            <p>Dashboard</p>
+          </a>
+        </li>
+
+        <!-- Markets -->
+        <li class="nav-item">
+          <a routerLink="/app/market" routerLinkActive="active" class="nav-link">
+            <i class="nav-icon fas fa-chart-line"></i>
+            <p>Markets</p>
+          </a>
+        </li>
+
+        <!-- Trading -->
+        <li class="nav-item" [class.menu-open]="tradingOpen">
+          <a href="#" (click)="toggleTrading($event)" class="nav-link">
+            <i class="nav-icon fas fa-exchange-alt"></i>
+            <p>
+              Trading
+              <i class="fas fa-angle-left right"></i>
+            </p>
+          </a>
+          <ul class="nav nav-treeview" [style.display]="tradingOpen ? 'block' : 'none'">
+            <li class="nav-item">
+              <a routerLink="/app/trading/buy" routerLinkActive="active" class="nav-link">
+                <i class="far fa-circle nav-icon text-success"></i>
+                <p>Buy Crypto</p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a routerLink="/app/trading/sell" routerLinkActive="active" class="nav-link">
+                <i class="far fa-circle nav-icon text-danger"></i>
+                <p>Sell Crypto</p>
+              </a>
+            </li>
+          </ul>
+        </li>
+
+        <!-- Wallet -->
+        <li class="nav-item" [class.menu-open]="walletOpen">
+          <a href="#" (click)="toggleWallet($event)" class="nav-link">
+            <i class="nav-icon fas fa-wallet"></i>
+            <p>
+              Wallet
+              <i class="fas fa-angle-left right"></i>
+            </p>
+          </a>
+          <ul class="nav nav-treeview" [style.display]="walletOpen ? 'block' : 'none'">
+            <li class="nav-item">
+              <a routerLink="/app/wallet" routerLinkActive="active"
+                 [routerLinkActiveOptions]="{ exact: true }" class="nav-link">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Overview</p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a routerLink="/app/wallet/deposit" routerLinkActive="active" class="nav-link">
+                <i class="far fa-circle nav-icon text-success"></i>
+                <p>Deposit</p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a routerLink="/app/wallet/withdraw" routerLinkActive="active" class="nav-link">
+                <i class="far fa-circle nav-icon text-warning"></i>
+                <p>Withdraw</p>
+              </a>
+            </li>
+          </ul>
+        </li>
+
+        <!-- Transactions -->
+        <li class="nav-item">
+          <a routerLink="/app/transactions" routerLinkActive="active" class="nav-link">
+            <i class="nav-icon fas fa-list"></i>
+            <p>Transactions</p>
+          </a>
+        </li>
+
+        <!-- Favorites -->
+        <li class="nav-item">
+          <a routerLink="/app/favorites" routerLinkActive="active" class="nav-link">
+            <i class="nav-icon fas fa-star"></i>
+            <p>Favorites</p>
+          </a>
+        </li>
+
+      </ul>
+    </nav>
+  </div>
+</aside>

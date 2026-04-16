@@ -1,0 +1,164 @@
+<div class="content-header">
+  <div class="container-fluid">
+    <div class="row mb-2">
+      <div class="col-sm-6">
+        <h1 class="m-0">Buy Cryptocurrency</h1>
+      </div>
+      <div class="col-sm-6">
+        <ol class="breadcrumb float-sm-right">
+          <li class="breadcrumb-item"><a routerLink="/app/dashboard">Home</a></li>
+          <li class="breadcrumb-item active">Buy Crypto</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</div>
+
+<section class="content">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-8">
+        <div class="card card-primary">
+          <div class="card-header">
+            <h3 class="card-title">Purchase Details</h3>
+          </div>
+          
+          <form (ngSubmit)="onSubmit()">
+            <div class="card-body">
+              
+              <!-- Success Message -->
+              <div *ngIf="successMessage" class="alert alert-success alert-dismissible">
+                <button type="button" class="close" data-dismiss="alert">&times;</button>
+                <i class="icon fas fa-check"></i> {{successMessage}}
+              </div>
+
+              <!-- Error Message -->
+              <div *ngIf="errorMessage" class="alert alert-danger alert-dismissible">
+                <button type="button" class="close" data-dismiss="alert">&times;</button>
+                <i class="icon fas fa-ban"></i> {{ errorMessage }}
+              </div>
+
+              <!-- Coin Selection -->
+              <div class="form-group">
+                <label>Select Cryptocurrency</label>
+                <select 
+                  class="form-control" 
+                  [(ngModel)]="coinId" 
+                  name="coinId" 
+                  (change)="loadCurrentPrice()" 
+                  [disabled]="isLoadingCoins"
+                  required>
+                  <option value="">
+                    {{ isLoadingCoins ? 'Loading coins...' : '-- Select a coin --' }}
+                  </option>
+                  <option *ngFor="let coin of coins" [value]="coin.id">
+                    {{ coin.name }} ({{ coin.symbol | uppercase }}) - ₹{{ coin.currentPrice | number:'1.2-2' }}
+                  </option>
+                </select>
+                <small class="form-text text-muted">
+                  Or <a routerLink="/app/market">browse all coins</a>
+                </small>
+              </div>
+
+              <!-- Current Price Display -->
+              <div *ngIf="currentPrice > 0" class="callout callout-info">
+                <h5>Current Price: ₹{{ currentPrice | number:'1.2-2' }}</h5>
+                <p class="mb-0">{{ coinName }} ({{ symbol | uppercase }})</p>
+              </div>
+
+              <!-- Quantity -->
+              <div class="form-group">
+                <label>Quantity</label>
+                <input 
+                  type="number" 
+                  class="form-control" 
+                  [(ngModel)]="quantity" 
+                  name="quantity"
+                  placeholder="Enter quantity"
+                  step="0.00000001"
+                  min="0"
+                  required>
+              </div>
+
+              <!-- Notes -->
+              <div class="form-group">
+                <label>Notes (Optional)</label>
+                <textarea 
+                  class="form-control" 
+                  rows="3" 
+                  [(ngModel)]="notes"
+                  name="notes"
+                  placeholder="Add any notes about this purchase"></textarea>
+              </div>
+
+            </div>
+
+            <div class="card-footer">
+              <button 
+                type="submit" 
+                class="btn btn-primary"
+                [disabled]="isLoading || !wallet || !coinId || quantity <= 0">
+                <span *ngIf="!isLoading">
+                  <i class="fas fa-shopping-cart"></i> Buy Now
+                </span>
+                <span *ngIf="isLoading">
+                  <i class="fas fa-spinner fa-spin"></i> Processing...
+                </span>
+              </button>
+              <button type="button" class="btn btn-default float-right" routerLink="/app/market">
+                Cancel
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <!-- Wallet Balance -->
+        <div class="card">
+          <div class="card-header">
+            <h3 class="card-title">Wallet Balance</h3>
+          </div>
+          <div class="card-body">
+            <h3 *ngIf="wallet">₹{{ wallet.balance | number:'1.2-2' }}</h3>
+            <p class="text-muted">Available Balance</p>
+            <a routerLink="/app/wallet/deposit" class="btn btn-success btn-sm">
+              <i class="fas fa-plus"></i> Add Funds
+            </a>
+          </div>
+        </div>
+
+        <!-- Order Summary -->
+        <div class="card" *ngIf="quantity > 0 && currentPrice > 0">
+          <div class="card-header">
+            <h3 class="card-title">Order Summary</h3>
+          </div>
+          <div class="card-body">
+            <table class="table">
+              <tr>
+                <td>Quantity:</td>
+                <td class="text-right">{{ quantity | number:'1.0-8' }}</td>
+              </tr>
+              <tr>
+                <td>Price per coin:</td>
+                <td class="text-right">₹{{ currentPrice | number:'1.2-2' }}</td>
+              </tr>
+              <tr>
+                <td>Subtotal:</td>
+                <td class="text-right">₹{{ totalAmount | number:'1.2-2' }}</td>
+              </tr>
+              <tr>
+                <td>Fees (1%):</td>
+                <td class="text-right">₹{{ fees | number:'1.2-2' }}</td>
+              </tr>
+              <tr class="font-weight-bold">
+                <td>Total Cost:</td>
+                <td class="text-right">₹{{ totalCost | number:'1.2-2' }}</td>
+              </tr>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,200 @@
+<div class="content-header">
+  <div class="container-fluid">
+    <div class="row mb-2">
+      <div class="col-sm-6">
+        <h1 class="m-0">Sell Cryptocurrency</h1>
+      </div>
+      <div class="col-sm-6">
+        <ol class="breadcrumb float-sm-right">
+          <li class="breadcrumb-item"><a routerLink="/dashboard">Home</a></li>
+          <li class="breadcrumb-item active">Sell Crypto</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</div>
+
+<section class="content">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-8">
+        <div class="card card-danger">
+          <div class="card-header">
+            <h3 class="card-title">Sale Details</h3>
+          </div>
+          
+          <form (ngSubmit)="onSubmit()">
+            <div class="card-body">
+              
+              <!-- Success Message -->
+              <div *ngIf="successMessage" class="alert alert-success alert-dismissible">
+                <button type="button" class="close" data-dismiss="alert">&times;</button>
+                <i class="icon fas fa-check"></i> {{ successMessage }}
+              </div>
+
+              <!-- Error Message -->
+              <div *ngIf="errorMessage" class="alert alert-danger alert-dismissible">
+                <button type="button" class="close" data-dismiss="alert">&times;</button>
+                <i class="icon fas fa-ban"></i> {{ errorMessage }}
+              </div>
+
+              <!-- No Holdings Warning -->
+              <div *ngIf="holdings.length === 0" class="alert alert-warning">
+                <i class="icon fas fa-exclamation-triangle"></i>
+                You don't have any assets to sell. <a routerLink="/market">Buy some crypto first</a>.
+              </div>
+
+              <!-- Coin Selection -->
+              <div class="form-group" *ngIf="holdings.length > 0">
+                <label>Select Asset to Sell</label>
+                <select 
+                  class="form-control" 
+                  [(ngModel)]="coinId" 
+                  name="coinId" 
+                  (change)="onCoinSelect()" 
+                  required>
+                  <option value="">-- Select an asset --</option>
+                  <option *ngFor="let holding of holdings" [value]="holding.coinId">
+                    {{ holding.coinName }} ({{ holding.symbol | uppercase }}) - Available: {{ holding.quantity | number:'1.0-8' }}
+                  </option>
+                </select>
+              </div>
+
+              <!-- Selected Holding Info -->
+              <div *ngIf="selectedHolding" class="callout callout-info">
+                <h5>{{ selectedHolding.coinName }} ({{ selectedHolding.symbol | uppercase }})</h5>
+                <p class="mb-1"><strong>Available:</strong> {{ selectedHolding.quantity | number:'1.0-8' }}</p>
+                <p class="mb-1"><strong>Avg Buy Price:</strong> ₹{{ selectedHolding.avgBuyPrice | number:'1.2-2' }}</p>
+                <p class="mb-0"><strong>Current Price:</strong> ₹{{ selectedHolding.currentPrice | number:'1.2-2' }}</p>
+              </div>
+
+              <!-- Quantity -->
+              <div class="form-group" *ngIf="selectedHolding">
+                <label>Quantity to Sell</label>
+                <input 
+                  type="number" 
+                  class="form-control" 
+                  [(ngModel)]="quantity" 
+                  name="quantity"
+                  placeholder="Enter quantity"
+                  step="0.00000001"
+                  [max]="selectedHolding.quantity"
+                  min="0"
+                  required>
+                <small class="form-text text-muted">
+                  Maximum: {{ selectedHolding.quantity | number:'1.0-8' }}
+                </small>
+              </div>
+
+              <!-- Quick Amount Buttons -->
+              <div class="form-group" *ngIf="selectedHolding">
+                <label>Quick Select:</label><br>
+                <button 
+                  type="button" 
+                  class="btn btn-outline-secondary btn-sm mr-2"
+                  (click)="quantity = selectedHolding.quantity * 0.25">
+                  25%
+                </button>
+                <button 
+                  type="button" 
+                  class="btn btn-outline-secondary btn-sm mr-2"
+                  (click)="quantity = selectedHolding.quantity * 0.5">
+                  50%
+                </button>
+                <button 
+                  type="button" 
+                  class="btn btn-outline-secondary btn-sm mr-2"
+                  (click)="quantity = selectedHolding.quantity * 0.75">
+                  75%
+                </button>
+                <button 
+                  type="button" 
+                  class="btn btn-outline-secondary btn-sm"
+                  (click)="quantity = selectedHolding.quantity">
+                  100%
+                </button>
+              </div>
+
+              <!-- Notes -->
+              <div class="form-group">
+                <label>Notes (Optional)</label>
+                <textarea 
+                  class="form-control" 
+                  rows="3" 
+                  [(ngModel)]="notes"
+                  name="notes"
+                  placeholder="Add any notes about this sale"></textarea>
+              </div>
+
+            </div>
+
+            <div class="card-footer">
+              <button 
+                type="submit" 
+                class="btn btn-danger"
+                [disabled]="isLoading || !wallet || !selectedHolding || quantity <= 0">
+                <span *ngIf="!isLoading">
+                  <i class="fas fa-money-bill-wave"></i> Sell Now
+                </span>
+                <span *ngIf="isLoading">
+                  <i class="fas fa-spinner fa-spin"></i> Processing...
+                </span>
+              </button>
+              <button type="button" class="btn btn-default float-right" routerLink="/dashboard">
+                Cancel
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <!-- Wallet Balance -->
+        <div class="card">
+          <div class="card-header">
+            <h3 class="card-title">Current Wallet Balance</h3>
+          </div>
+          <div class="card-body">
+            <h3 *ngIf="wallet">₹{{ wallet.balance | number:'1.2-2' }}</h3>
+            <p class="text-muted">After sale, you'll receive funds here</p>
+          </div>
+        </div>
+
+        <!-- Sale Summary -->
+        <div class="card" *ngIf="quantity > 0 && currentPrice > 0 && selectedHolding">
+          <div class="card-header">
+            <h3 class="card-title">Sale Summary</h3>
+          </div>
+          <div class="card-body">
+            <table class="table">
+              <tr>
+                <td>Quantity:</td>
+                <td class="text-right">{{ quantity | number:'1.0-8' }}</td>
+              </tr>
+              <tr>
+                <td>Current Price:</td>
+                <td class="text-right">₹{{ currentPrice | number:'1.2-2' }}</td>
+              </tr>
+              <tr>
+                <td>Subtotal:</td>
+                <td class="text-right">₹{{ totalAmount | number:'1.2-2' }}</td>
+              </tr>
+              <tr>
+                <td>Fees (1%):</td>
+                <td class="text-right">₹{{ fees | number:'1.2-2' }}</td>
+              </tr>
+              <tr class="font-weight-bold">
+                <td>You'll Receive:</td>
+                <td class="text-right">₹{{ netAmount | number:'1.2-2' }}</td>
+              </tr>
+              <tr [ngClass]="profitLoss >= 0 ? 'text-success' : 'text-danger'">
+                <td>Estimated P/L:</td>
+                <td class="text-right">₹{{ profitLoss | number:'1.2-2' }}</td>
+              </tr>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

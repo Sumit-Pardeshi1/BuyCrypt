@@ -1,0 +1,151 @@
+<div class="content-header">
+  <div class="container-fluid">
+    <div class="row mb-2">
+      <div class="col-sm-6 d-flex align-items-center">
+        <button class="btn btn-sm btn-secondary me-2" (click)="goBack()">
+          <i class="fas fa-arrow-left"></i>
+        </button>
+        <h1 class="m-0">Coin Details</h1>
+      </div>
+    </div>
+  </div>
+</div>
+
+<section class="content">
+  <div class="container-fluid">
+
+    <!-- Loading State -->
+    <div *ngIf="isLoading" class="text-center py-5">
+      <i class="fas fa-spinner fa-spin fa-3x text-primary"></i>
+      <p class="mt-3">Loading coin details...</p>
+    </div>
+
+    <!-- Error State -->
+    <div *ngIf="errorMessage && !isLoading" class="alert alert-danger">
+      <i class="icon fas fa-ban"></i> {{ errorMessage }}
+      <button class="btn btn-sm btn-primary float-end" (click)="goBack()">
+        Go Back
+      </button>
+    </div>
+
+    <!-- Coin Detail -->
+    <div *ngIf="coin && !isLoading">
+
+      <!-- Header Card -->
+      <div class="row">
+        <div class="col-12">
+          <div class="card card-primary card-outline">
+            <div class="card-body">
+              <div class="row align-items-center">
+
+                <!-- Coin Image -->
+                <div class="col-md-2 text-center">
+                  <img
+                    [src]="coin.image"
+                    [alt]="coin.name"
+                    class="img-fluid"
+                    style="max-width: 100px;"
+                    (error)="coin.image = 'assets/default-coin.png'"
+                  />
+                </div>
+
+                <!-- Coin Info -->
+                <div class="col-md-6">
+                  <h2>
+                    {{ coin.name }}
+                    <small class="text-muted">({{ coin.symbol | uppercase }})</small>
+                  </h2>
+
+                  <h3 class="mt-3">
+                    ₹{{ coin.currentPrice | number:'1.2-2' }}
+                  </h3>
+
+                  <p
+                    class="mb-0"
+                    [ngClass]="coin.priceChangePercentage24h >= 0 ? 'text-success' : 'text-danger'"
+                  >
+                    <i
+                      class="fas"
+                      [ngClass]="coin.priceChangePercentage24h >= 0 ? 'fa-arrow-up' : 'fa-arrow-down'"
+                    ></i>
+                    {{ coin.priceChangePercentage24h | number:'1.2-2' }}% (24h)
+                  </p>
+                </div>
+
+                <!-- Buy Button -->
+                <div class="col-md-4 text-end">
+                  <button class="btn btn-lg btn-primary" (click)="buyCoin()">
+                    <i class="fas fa-shopping-cart"></i>
+                    Buy {{ coin.symbol | uppercase }}
+                  </button>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Stats Cards -->
+      <div class="row">
+
+        <div class="col-lg-3 col-6">
+          <div class="small-box bg-info">
+            <div class="inner">
+              <h4>₹{{ coin.high24h | number:'1.2-2' }}</h4>
+              <p>24h High</p>
+            </div>
+            <div class="icon">
+              <i class="fas fa-arrow-up"></i>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-3 col-6">
+          <div class="small-box bg-warning">
+            <div class="inner">
+              <h4>₹{{ coin.low24h | number:'1.2-2' }}</h4>
+              <p>24h Low</p>
+            </div>
+            <div class="icon">
+              <i class="fas fa-arrow-down"></i>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-3 col-6">
+          <div class="small-box bg-success">
+            <div class="inner">
+              <h4>₹{{ coin.marketCap | number:'1.0-0' }}</h4>
+              <p>Market Cap</p>
+            </div>
+            <div class="icon">
+              <i class="fas fa-chart-pie"></i>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-3 col-6">
+          <div
+            class="small-box"
+            [ngClass]="coin.priceChangePercentage24h >= 0 ? 'bg-success' : 'bg-danger'"
+          >
+            <div class="inner">
+              <h4>
+                {{ coin.priceChangePercentage24h | number:'1.2-2' }}%
+              </h4>
+              <p>24h Change</p>
+            </div>
+            <div class="icon">
+              <i
+                class="fas"
+                [ngClass]="coin.priceChangePercentage24h >= 0 ? 'fa-arrow-up' : 'fa-arrow-down'"
+              ></i>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
