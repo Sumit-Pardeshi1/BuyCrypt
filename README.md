@@ -93,7 +93,7 @@ Open **http://localhost:4200** in your browser.
 ### Screenshot's
 <img width="350" height="300" alt="Screenshot 2026-04-03 160852" src="https://github.com/user-attachments/assets/14558448-8e70-4eb1-9b53-1f6f25c7b968" />
 <img width="350" height="300" alt="Screenshot 2026-04-03 191404" src="https://github.com/user-attachments/assets/da08eeeb-29f8-4ae9-9c70-e5d8efaa847a" />
-<img align="Right" width="200" height="300" alt="Screenshot 2026-04-03 191658" src="https://github.com/user-attachments/assets/767fab1e-f390-4269-9c2d-5e727bd57714" />
+<img width="200" height="300" alt="Screenshot 2026-04-03 191658" src="https://github.com/user-attachments/assets/767fab1e-f390-4269-9c2d-5e727bd57714" />
 <img width="450" height="400" alt="Screenshot 2026-04-03 191431" src="https://github.com/user-attachments/assets/54c8306b-dccc-4bdc-9af9-7e1ee09659a6" />
 <img width="450" height="400" alt="Screenshot 2026-04-03 191448" src="https://github.com/user-attachments/assets/c097efd4-67b1-4139-add7-f6f2b4d25a34" />
 <img width="450" height="400" alt="Screenshot 2026-04-03 191510" src="https://github.com/user-attachments/assets/039f799f-b706-4691-aa94-a1c069d75127" />
