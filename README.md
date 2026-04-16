@@ -91,4 +91,4 @@ Open **http://localhost:4200** in your browser.
 ---
 
 ## 📄 License
-MIT © 2024 Sumit Pardeshi
+© 2024 Sumit Pardeshi
