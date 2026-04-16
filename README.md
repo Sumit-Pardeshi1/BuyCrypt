@@ -91,7 +91,7 @@ Open **http://localhost:4200** in your browser.
 ---
 
 ### Screenshot's
-<img width="910" height="686" alt="Screenshot 2026-04-03 160852" src="https://github.com/user-attachments/assets/14558448-8e70-4eb1-9b53-1f6f25c7b968" />
+<img width="400" height="300" alt="Screenshot 2026-04-03 160852" src="https://github.com/user-attachments/assets/14558448-8e70-4eb1-9b53-1f6f25c7b968" />
 <img width="636" height="726" alt="Screenshot 2026-04-03 191404" src="https://github.com/user-attachments/assets/da08eeeb-29f8-4ae9-9c70-e5d8efaa847a" />
 <img width="1919" height="909" alt="Screenshot 2026-04-03 191431" src="https://github.com/user-attachments/assets/54c8306b-dccc-4bdc-9af9-7e1ee09659a6" />
 <img width="1545" height="913" alt="Screenshot 2026-04-03 191448" src="https://github.com/user-attachments/assets/c097efd4-67b1-4139-add7-f6f2b4d25a34" />
@@ -106,8 +106,11 @@ Open **http://localhost:4200** in your browser.
 <img width="1536" height="912" alt="Screenshot 2026-04-03 191724" src="https://github.com/user-attachments/assets/fc3d0830-2591-4896-b91c-b83a31aeff6f" />
 <img width="354" height="907" alt="Screenshot 2026-04-03 191658" src="https://github.com/user-attachments/assets/767fab1e-f390-4269-9c2d-5e727bd57714" />
 <div align="center">
-  <video src="https://github.com/user-attachments/assets/7c2d1b53-257d-4f0b-bb58-438b371d077b" width="400" />
+  <video src="https://github.com/user-attachments/assets/98d4216d-3a1a-4510-b1df-d3a545c3270b" width="400" />
 </div>
+
+
+
 
 
 
