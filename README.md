@@ -105,7 +105,13 @@ Open **http://localhost:4200** in your browser.
 <img width="1562" height="905" alt="Screenshot 2026-04-03 191646" src="https://github.com/user-attachments/assets/6d0c50e2-3f17-43d8-b122-8caeb1426f69" />
 <img width="1536" height="912" alt="Screenshot 2026-04-03 191724" src="https://github.com/user-attachments/assets/fc3d0830-2591-4896-b91c-b83a31aeff6f" />
 <img width="354" height="907" alt="Screenshot 2026-04-03 191658" src="https://github.com/user-attachments/assets/767fab1e-f390-4269-9c2d-5e727bd57714" />
-https://github.com/user-attachments/assets/7c6c828e-f683-4688-bb45-1b4e5b8798d1
+<video width="640" height="360" controls>
+  <source src="https://github.com/user-attachments/assets/7c2d1b53-257d-4f0b-bb58-438b371d077b" type="video/mp4">
+  <source src="movie.ogg" type="video/ogg">
+  Your browser does not support the video tag.
+</video>
+
+
 
 
 
