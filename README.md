@@ -105,18 +105,27 @@ Open **http://localhost:4200** in your browser.
 <img width="1562" height="905" alt="Screenshot 2026-04-03 191646" src="https://github.com/user-attachments/assets/6d0c50e2-3f17-43d8-b122-8caeb1426f69" />
 <img width="1536" height="912" alt="Screenshot 2026-04-03 191724" src="https://github.com/user-attachments/assets/fc3d0830-2591-4896-b91c-b83a31aeff6f" />
 <img width="354" height="907" alt="Screenshot 2026-04-03 191658" src="https://github.com/user-attachments/assets/767fab1e-f390-4269-9c2d-5e727bd57714" />
-<div align="center">
-  <video src="https://github.com/user-attachments/assets/98d4216d-3a1a-4510-b1df-d3a545c3270b" width="400" />
-</div>
 
-
-
-
-
-
-
-
-
+<p align="center"> <img src="https://github.com/user-attachments/assets/14558448-8e70-4eb1-9b53-1f6f25c7b968" width="800"/> </p>
+<p align="center"> <img src="https://github.com/user-attachments/assets/da08eeeb-29f8-4ae9-9c70-e5d8efaa847a" width="800"/> </p>
+<p align="center"> <img src="https://github.com/user-attachments/assets/54c8306b-dccc-4bdc-9af9-7e1ee09659a6" width="800"/> </p>
+<p align="center"> <img src="https://github.com/user-attachments/assets/c097efd4-67b1-4139-add7-f6f2b4d25a34" width="800"/> </p>
+<p align="center"> <img src="https://github.com/user-attachments/assets/039f799f-b706-4691-aa94-a1c069d75127" width="800"/> </p>
+<p align="center"> <img src="https://github.com/user-attachments/assets/53006a5b-f9e5-4eb5-9889-ec041665d198" width="800"/> </p>
+✅ Transfer Success Output
+<p align="center"> <img src="https://github.com/user-attachments/assets/474943f1-3b6f-4c6e-b070-543deabaca0f" width="800"/> </p>
+⚠️ Error / Status Handling
+<p align="center"> <img src="https://github.com/user-attachments/assets/095946d1-dc46-4eb7-aa4c-85544532ba8d" width="800"/> </p>
+🔄 Processing / Loading State
+<p align="center"> <img src="https://github.com/user-attachments/assets/8788bcac-2a9a-43ba-bbf6-8fdfab2eaf0e" width="800"/> </p>
+📊 Final Output Screen
+<p align="center"> <img src="https://github.com/user-attachments/assets/9b17cb24-6305-40b3-a72f-66bfe95bfdac" width="800"/> </p>
+📁 Additional Result View
+<p align="center"> <img src="https://github.com/user-attachments/assets/0a70015e-51fd-470f-bd63-69debe470bca" width="800"/> </p>
+🧾 Logs / Debug Output
+<p align="center"> <img src="https://github.com/user-attachments/assets/6d0c50e2-3f17-43d8-b122-8caeb1426f69" width="800"/> </p>
+📱 Compact / Supporting Views
+<p align="center"> <img src="https://github.com/user-attachments/assets/fc3d0830-2591-4896-b91c-b83a31aeff6f" width="45%"/> <img src="https://github.com/user-attachments/assets/767fab1e-f390-4269-9c2d-5e727bd57714" width="45%"/> </p>
 ---
 
 ## 📄 License
