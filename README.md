@@ -103,8 +103,11 @@ Open **http://localhost:4200** in your browser.
 <img width="1563" height="910" alt="Screenshot 2026-04-03 191609" src="https://github.com/user-attachments/assets/9b17cb24-6305-40b3-a72f-66bfe95bfdac" />
 <img width="1556" height="911" alt="Screenshot 2026-04-03 191630" src="https://github.com/user-attachments/assets/0a70015e-51fd-470f-bd63-69debe470bca" />
 <img width="1562" height="905" alt="Screenshot 2026-04-03 191646" src="https://github.com/user-attachments/assets/6d0c50e2-3f17-43d8-b122-8caeb1426f69" />
-<img width="354" height="907" alt="Screenshot 2026-04-03 191658" src="https://github.com/user-attachments/assets/767fab1e-f390-4269-9c2d-5e727bd57714" />
 <img width="1536" height="912" alt="Screenshot 2026-04-03 191724" src="https://github.com/user-attachments/assets/fc3d0830-2591-4896-b91c-b83a31aeff6f" />
+<img width="354" height="907" alt="Screenshot 2026-04-03 191658" src="https://github.com/user-attachments/assets/767fab1e-f390-4269-9c2d-5e727bd57714" />
+https://github.com/user-attachments/assets/7c6c828e-f683-4688-bb45-1b4e5b8798d1
+
+
 
 ---
 
